@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutritionUI.MainPage">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <!--Main layout-->
+
+            <Grid RowDefinitions="105,Auto,Auto,280,Auto,Auto,*" ColumnDefinitions="*,Auto" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="30,60,30,15">
+
+            <!--HEADER-->
+            <Grid Grid.Row="0" Grid.ColumnSpan="2" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
+                <!--back button-->
+                <ImageButton Grid.Column="0" Grid.RowSpan="1" Source="backbtn.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="Start" />
+                <!--profile picture-->
+                <ImageButton Grid.Column="1" Grid.RowSpan="1" Source="women.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="StartAndExpand" BackgroundColor="#f1f0f4" CornerRadius="10"/>
+                <!--Welcome & Name-->
+                    <Label Grid.Column="2" Grid.Row="0" Text="Welcome Claire" TextColor="Black" FontAttributes="Bold" Margin="-70,0,0,0"/>
+                    <Label Grid.Column="2" Grid.Row="1" Text="Here to help you reach your nutrition goals!" FontSize="14" Margin="-70,-25,0,0"/>
+                <!--Search button-->
+                    <ImageButton Grid.Column="2" Grid.RowSpan="1" VerticalOptions="Center" HorizontalOptions="End" Source="searchbt.png"  HeightRequest="25" WidthRequest="25" Clicked="OnButton_Clicked" />
+                    
+            </Grid>
+
+                <!--Meal plans -->
+                <Label Grid.Column="0" Grid.Row="2" Text="Available Meal Plans" TextColor="#858788" FontSize="20" FontAttributes="Bold" />
+
+                 <CollectionView Grid.ColumnSpan="2" Grid.Row="3" HorizontalScrollBarVisibility="Never"
+                                 ItemsSource="{Binding mealPlans}"
+                                 Margin="-20,0,-25,0"
+                                 ItemsLayout="HorizontalList"
+                                 HeightRequest="380">
+                                 <CollectionView.ItemTemplate> 
+                                   <DataTemplate>
+                                        <StackLayout Padding="2,10,20,30">
+                                           <Frame Padding="20,10,20,30" WidthRequest="220" HeightRequest="320" VerticalOptions="FillAndExpand" CornerRadius="20" HorizontalOptions="Start" HasShadow="False">
+                                               <Grid RowDefinitions="*,Auto,Auto" ColumnDefinitions="*,Auto">
+                                                    <Frame Grid.ColumnSpan="2" Grid.Row="0" IsClippedToBounds="True" CornerRadius="25" HasShadow="False" Padding="0">
+                                                     <Image Source="{Binding Picture}" Aspect="AspectFill" />
+                                            
+
+                                        </Frame>
+                                                   <Label Grid.Column="0" Grid.Row="1" Text="{Binding Name}" FontAttributes="Bold" Padding="0,10,0,0"/>
+                                                   <Label Grid.Column="0" Grid.Row="2" Text="{Binding Rating}" TextColor="{DynamicResource MainColor}" FontAttributes="Bold"/>
+                                                   <ImageButton Clicked="Button_Clicked" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Source="goicon.png" HorizontalOptions="End" WidthRequest="35" HeightRequest="35" CornerRadius="8" VerticalOptions="Center" />
+                                               </Grid>
+                                           </Frame>
+                                       </StackLayout>
+                                    </DataTemplate>
+                                 </CollectionView.ItemTemplate>
+                     
+
+  
+                 </CollectionView>
+                <!--Today drop down calendar TO IMPLEMEMNT IN VIEW MODEL--> 
+                <StackLayout Grid.Column="0" Grid.Row="4">
+                     <Label  Text="Today" FontAttributes="Bold" FontSize="25" />
+                    <DatePicker MinimumDate="01/01/2021"
+                                MaximumDate="12/31/2021"
+                                Date="09/10/2021" />
+                </StackLayout>
+                    
+                <!--nutrition table-->
+                <Grid Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                   <Grid.ColumnDefinitions>
+                       <ColumnDefinition Width="*"/>
+                       <ColumnDefinition Width="*"/>
+                       <ColumnDefinition Width="*"/>
+                       <ColumnDefinition Width="*"/>
+                       <ColumnDefinition Width="*"/>
+                   </Grid.ColumnDefinitions>
+
+                    <Label Text="Sugar" Grid.Column="0"/>
+                    <Label Text="Fat" Grid.Column="1"/>
+                    <Label Text="Protein" Grid.Column="2"/>
+                    <Label Text="Carbs" Grid.Column="3"/>
+                     <Label Text="Calorie" Grid.Column="4"/>
+
+
+                </Grid>
+
+                <!--Listview with food items consumed-->
+
+                
+
+
+
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

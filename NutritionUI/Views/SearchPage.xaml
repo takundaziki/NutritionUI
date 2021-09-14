@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NutritionUI.Views.SearchPage">
+    <ContentPage.Content>
+       <StackLayout>
+           
+            <SearchBar x:Name="FoodSearchBar" Placeholder="Search for food..." PlaceholderColor="Gray"
+                         SearchCommand="{Binding GetDataCommand}" />
+            <ListView x:Name="ItemsListView"
+               
+                VerticalOptions="FillAndExpand"
+                     ItemsSource="{Binding Items}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding Calories}"
+                                       TextColor="Gray"/>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout> 
+    </ContentPage.Content>
+</ContentPage>
+
